@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 use Getopt::Long;
-#use Common;
 
 # Read in the SCSS file and keep track of 'sections'
 # then use these sections to make a table of contents
@@ -14,7 +13,7 @@ GetOptions (
 );
 
 my $prev_line_state = 0;
-my $line_count = ();
+my $line_count = 0;
 my $max_title_length = 20;
 my @sections; # Array of sections
 
