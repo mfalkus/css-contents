@@ -17,7 +17,7 @@ my $file;
 my $output;
 GetOptions (
     'v|verbose'     => \$verbose,
-    'd|dryrun'      => \$dryrun,
+    'n|dryrun'      => \$dryrun,
     'i|inplace'     => \$inplace,
     'f|file=s'      => \$file,
     'o|output=s'    => \$output,
@@ -178,26 +178,24 @@ __END__
 
 =head1 NAME
 
-generate-css-toc - Output a nicely formatted table of contents from a SCSS file
+update-toc - Add/Update a nicely formatted table of contents for a (S)CSS file
 
 =head1 SYNOPSIS
 
-  generate-css-toc [-d]
+  update-toc [-n] [-v] -f input-file [-o output-file] [-i|--inplace]
 
 =head1 DESCRIPTION
 
-Simple script to generate a formatted table of contents for a CSS file based on
-the format used by the inuit.css framework.
+Simple script to generate a formatted table of contents for a CSS file based
+loosely on the format used by the fantastic inuit.css framework.
 
-The script detects two different title markers in CSS, the first is the usual:
+The script detects two different title markers in CSS, the first is large titles:
  /*------------------------------------*\
-     $CSS-SECTION-TITLE-HERE>
+     CSS-SECTION-TITLE-HERE
  \*------------------------------------*/
 
 The second is a shorthand version:
- // #CSS-SECTION-TITLE-HERE
-or
- // $CSS-SECTION-TITLE-HERE
+ // CSS-SECTION-TITLE-HERE
 
 The output by default is:
  /*------------------------------------*\
@@ -208,11 +206,32 @@ The output by default is:
   * $OTHER-ITEM-HERE..........
   */
 
+The script will replace an existing table of contents that fits this format.
+It will also leave in place a stylesheet header, e.g. those used in WordPress
+themes.
+
 =head1 OPTIONS
 
-=head2 C<-d>
+=head2 C<-f|--file>
 
-Debug output (basically adds line numbers where the title can currently be found)
-and skip outputting the formatted table of contents.
+The input CSS/SCSS file to add/update the table of contents to.
+
+=head2 C<-o|--output>
+
+The filename to store the output to. Note that any existing file will be
+clobbered. Use 'inplace' for overwriting the current input file.
+
+=head2 C<-i|--inplace>
+
+Use the input filename as the output filename. This causes a copy of the
+input file to be made at [inputfilename].bak
+
+=head2 C<-n|--dryrun>
+
+Don't actual output anything to file. Most useful when used with verbose.
+
+=head2 C<-v>
+
+Verbose output. Useful for debugging.
 
 =cut

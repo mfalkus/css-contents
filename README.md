@@ -1,7 +1,8 @@
-Css-Contents
+CSS Contents
 ============
 
-Simple script to generate a formatted table of contents for a CSS file based on the format used by the inuit.css framework.
+A relatively simple script to generate a formatted table of contents for a
+SASS/CSS file based loosely on the format used by the inuit.css framework.
 
 ## What the script does
 
@@ -14,10 +15,10 @@ The script detects two different title markers in CSS, the first is the usual:
 
 The second is a shorthand version:
 ```css
- // #CSS-SECTION-TITLE-HERE
+ // CSS-SECTION-TITLE-HERE
 ```
 
-The output by default is:
+The ToC output is:
 ```css
  /*------------------------------------*\
      CONTENTS
@@ -28,17 +29,15 @@ The output by default is:
   */
 ```
 
-Simple stuff but I've found it to be really useful when you're making a lot of changes to a stylesheet and aren't keeping the TOC of up to date.
+Simple stuff but I've found it to be really useful when you're making a lot of
+changes to a stylesheet and aren't keeping the TOC of up to date.
 
-## Example usage
+## Recommended/Example usage
 
-    # To output a table of contents to STDOUT
-    cat my-stylesheet.css | ./create-toc.pl
+    # Add (or update if already exists) a table of contents to our stylesheet
+    ./update-toc.pl -f style.css
 
-    # To see which lines are triggering a section title run with -d
-    # See the perldoc for more information on this output
-    cat my-stylesheet.css | ./create-toc.pl -d
+    # To see which lines are triggering a section title run with -v and -n
+    ./update-toc.pl -n -v -f style.css
 
-## To Do
-
-I'll probably add a flag that allows the table of contents to be prepended to the current stylesheet, or perhaps substituted for #TOC# or similar.
+Checkout the `perldoc` for full details.
