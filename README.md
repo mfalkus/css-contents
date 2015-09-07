@@ -8,24 +8,23 @@ Simple script to generate a formatted table of contents for a CSS file based on 
 The script detects two different title markers in CSS, the first is the usual:
 ```css
  /*------------------------------------*\
-     $CSS-SECTION-TITLE-HERE>
+     CSS-SECTION-TITLE-HERE
  \*------------------------------------*/
 ```
 
 The second is a shorthand version:
 ```css
  // #CSS-SECTION-TITLE-HERE
- // $OR-WITH-A-DOLLAR
 ```
 
 The output by default is:
 ```css
  /*------------------------------------*\
-     $CONTENTS
+     CONTENTS
  \*------------------------------------*/
  /**
-  * $CSS-SECTION-TITLE-HERE...
-  * $OTHER-ITEM-HERE..........
+  * CSS-SECTION-TITLE-HERE...
+  * OTHER-ITEM-HERE..........
   */
 ```
 
